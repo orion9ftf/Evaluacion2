@@ -2,9 +2,9 @@
 
 Procesar formulario - modificación del DOM
 
-El proyecto se dividirá por Spint 
+El proyecto se dividirá por Partes o Etapas de desarrollo
 
-### Parte 1 | Estructura mínima y base visual:
+### Etapa 1 | Estructura mínima y base visual:
 
 - Se incorpora la estructura base del proyecto, tanto para
   - HTML
@@ -12,20 +12,21 @@ El proyecto se dividirá por Spint
   - Javascript
 
 
-### Parte 2 | Campos del formulario y estilos básicos
+### Etapa 2 | Campos del formulario y estilos básicos
 
 Agregamos los campos al formulario
 
-### Parte 3 | Validación básica de campos y errores visuales
-Solo actualizamos los inputs para que tengan el atributo required, si no lo tienen ya (esto es opcional porque lo haremos también con JS).
-Además, usamos span con ID para mensajes de error (ya incluimos esto en la etapa anterior, así que no hay cambios nuevos aquí en HTML).
+### Etapa 3 | Validación básica de campos y errores visuales
+- Solo se actualiza los inputs para que tengan el atributo required.
+- Además, se usa span con ID para mensajes de error.
+
+### Etapa 4 | Validación del formulario completo y estructura de datos básica
+- No hay cambios en esta etapa, se agrega el atributo `novalidate` al formulario para evitar la validación del navegador.
 
 
-
-### Parte 4 | 
-### Parte 5 | 
-### Parte 6 | 
-### Parte 7 | 
-### Parte 8 | 
-### Parte 9 | 
-### Parte 10 | 
+### Etapa 5 | 
+### Etapa 6 | 
+### Etapa 7 | 
+### Etapa 8 | 
+### Etapa 9 | 
+### Etapa 10 | 

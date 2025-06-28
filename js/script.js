@@ -70,3 +70,41 @@ document.addEventListener("DOMContentLoaded", () => {
   obtenerElementosDOM();
   configurarValidaciones();
 });
+
+function validarFormulario() {
+  const campos = ["nombre", "precio", "categoria"];
+  let formularioValido = true;
+
+  campos.forEach((campo) => {
+    const valido = validarCampo(campo);
+    if (!valido) formularioValido = false;
+  });
+
+  return formularioValido;
+}
+
+function obtenerDatosFormulario() {
+  return {
+    nombre: elementos.nombre.value.trim(),
+    precio: parseFloat(elementos.precio.value),
+    categoria: elementos.categoria.value.trim(),
+  };
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  obtenerElementosDOM();
+  configurarValidaciones();
+
+  elementos.formulario.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+
+    if (!validarFormulario()) {
+      console.warn("Formulario no válido");
+      return;
+    }
+
+    const datos = obtenerDatosFormulario();
+    console.log("Producto listo para ser agregado:", datos);
+  });
+});
+
