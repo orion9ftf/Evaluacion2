@@ -68,4 +68,15 @@ body {
   font-weight: bold;
 }
 
+.error-message {
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  min-height: 1.25rem;
+}
+
+input.error {
+  border-color: #ef4444;
+}
+
 
