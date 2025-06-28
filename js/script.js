@@ -1,0 +1,72 @@
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Etapa 1 - probando js");
+});
+
+
+const elementos = {
+  formulario: null,
+  nombre: null,
+  precio: null,
+  categoria: null,
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Probando Etapa 2");
+  obtenerElementosDOM();
+});
+
+function obtenerElementosDOM() {
+  elementos.formulario = document.getElementById("formulario-producto");
+  elementos.nombre = document.getElementById("nombre");
+  elementos.precio = document.getElementById("precio");
+  elementos.categoria = document.getElementById("categoria");
+}
+
+function configurarValidaciones() {
+  const campos = ["nombre", "precio", "categoria"];
+  campos.forEach((campo) => {
+    const input = document.getElementById(campo);
+    input.addEventListener("blur", () => validarCampo(campo));
+    input.addEventListener("input", () => limpiarErrorCampo(campo));
+  });
+}
+
+function validarCampo(nombreCampo) {
+  const input = document.getElementById(nombreCampo);
+  const valor = input.value.trim();
+  let error = "";
+
+  if (valor === "") {
+    error = `El campo ${nombreCampo} es obligatorio`;
+  }
+
+  mostrarErrorCampo(nombreCampo, error);
+  return error === "";
+}
+
+function mostrarErrorCampo(nombreCampo, mensajeError) {
+  const input = document.getElementById(nombreCampo);
+  const error = document.getElementById(`error-${nombreCampo}`);
+
+  if (mensajeError) {
+    input.classList.add("error");
+    error.textContent = mensajeError;
+  } else {
+    input.classList.remove("error");
+    error.textContent = "";
+  }
+}
+
+function limpiarErrorCampo(nombreCampo) {
+  const input = document.getElementById(nombreCampo);
+  const error = document.getElementById(`error-${nombreCampo}`);
+  input.classList.remove("error");
+  error.textContent = "";
+}
+
+// función desde DOMContentLoaded
+document.addEventListener("DOMContentLoaded", () => {
+  obtenerElementosDOM();
+  configurarValidaciones();
+});
