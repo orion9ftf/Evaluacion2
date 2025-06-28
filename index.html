@@ -18,7 +18,27 @@
       </div>
       <div class="card-content">
         <form id="formulario-producto">
-          <!-- Campos se agregan en próxima etapa -->
+          <form id="formulario-producto" novalidate>
+            <div class="form-group">
+              <label for="nombre">Nombre del Producto</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Ej: Laptop Dell" />
+              <span class="error-message" id="error-nombre"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="precio">Precio</label>
+              <input type="number" id="precio" name="precio" placeholder="000" />
+              <span class="error-message" id="error-precio"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="categoria">Categoría</label>
+              <input type="text" id="categoria" name="categoria" placeholder="Ej: Electrónicos" />
+              <span class="error-message" id="error-categoria"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Agregar Producto</button>
+          </form>
         </form>
       </div>
     </section>

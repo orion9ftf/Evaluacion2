@@ -4,7 +4,7 @@ Procesar formulario - modificación del DOM
 
 El proyecto se dividirá por Spint 
 
-Sprint 1:
+### Parte 1 | Estructura mínima y base visual:
 
 - Se incorpora la estructura base del proyecto, tanto para
   - HTML
@@ -12,4 +12,16 @@ Sprint 1:
   - Javascript
 
 
-- 
+### Parte 2 | Campos del formulario y estilos básicos
+
+
+
+### Parte 3 | 
+
+### Parte 4 | 
+### Parte 5 | 
+### Parte 6 | 
+### Parte 7 | 
+### Parte 8 | 
+### Parte 9 | 
+### Parte 10 | 
