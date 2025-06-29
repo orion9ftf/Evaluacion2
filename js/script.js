@@ -66,10 +66,10 @@ function limpiarErrorCampo(nombreCampo) {
 }
 
 // función desde DOMContentLoaded
-document.addEventListener("DOMContentLoaded", () => {
-  obtenerElementosDOM();
-  configurarValidaciones();
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   obtenerElementosDOM();
+//   configurarValidaciones();
+// });
 
 function validarFormulario() {
   const campos = ["nombre", "precio", "categoria"];
@@ -95,16 +95,68 @@ document.addEventListener("DOMContentLoaded", () => {
   obtenerElementosDOM();
   configurarValidaciones();
 
-  elementos.formulario.addEventListener("submit", (evento) => {
-    evento.preventDefault();
+  // elementos.formulario.addEventListener("submit", (evento) => {
+  //   evento.preventDefault();
 
-    if (!validarFormulario()) {
-      console.warn("Formulario no válido");
-      return;
-    }
+  //   if (!validarFormulario()) {
+  //     console.warn("Formulario no válido");
+  //     return;
+  //   }
 
-    const datos = obtenerDatosFormulario();
-    console.log("Producto listo para ser agregado:", datos);
-  });
+  //   const datos = obtenerDatosFormulario();
+  //   console.log("Producto listo para ser agregado:", datos);
+  // });
+});
+
+const productos = [];
+
+function agregarProducto(producto) {
+  productos.push(producto);
+  actualizarListaProductos();
+}
+
+function actualizarListaProductos() {
+  const contenedor = document.getElementById("lista-productos");
+
+  if (productos.length === 0) {
+    contenedor.innerHTML = `
+      <div class="productos-vacio">
+        <p>No hay productos registrados. Agrega uno usando el formulario.</p>
+      </div>`;
+    return;
+  }
+
+  const html = productos
+    .map((p) => {
+      return `
+        <div class="producto-item">
+          <div class="producto-info">
+            <h3>${p.nombre}</h3>
+            <p>Categoría: ${p.categoria} | Precio: $${p.precio.toFixed(2)}</p>
+          </div>
+        </div>`;
+    })
+    .join("");
+
+  contenedor.innerHTML = html;
+}
+
+let contadorId = 1;
+
+elementos.formulario.addEventListener("submit", (evento) => {
+  evento.preventDefault();
+
+  if (!validarFormulario()) return;
+
+  const datos = obtenerDatosFormulario();
+
+  const nuevoProducto = {
+    id: contadorId++,
+    ...datos,
+    fechaCreacion: new Date().toISOString(),
+  };
+
+  agregarProducto(nuevoProducto);
+  elementos.formulario.reset();
 });
 

@@ -79,4 +79,34 @@ input.error {
   border-color: #ef4444;
 }
 
+.productos-lista {
+  min-height: 100px;
+}
+
+.productos-vacio {
+  text-align: center;
+  color: #6b7280;
+  padding: 1rem;
+}
+
+.producto-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.producto-info h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.producto-info p {
+  margin: 0.25rem 0 0;
+  color: #6b7280;
+}
+
 
