@@ -33,7 +33,9 @@ Agregamos un contenedor para mostrar la lista de productos debajo del formulario
 No hay cambios en esta etapa en el HTML original. Pero se modifica el código generado dinámicamente en Javascript para agregar un botón de eliminación.
 
 
-### Etapa 7 | 
+### Etapa 7 | Mostrar estadísticas de productos (total, promedio, categorías únicas)
+
+
 ### Etapa 8 | 
 ### Etapa 9 | 
 ### Etapa 10 | 

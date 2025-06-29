@@ -139,6 +139,7 @@ function actualizarListaProductos() {
     .join("");
 
   contenedor.innerHTML = html;
+  actualizarEstadisticas();
 }
 
 let contadorId = 1;
@@ -190,4 +191,31 @@ function eliminarProducto(id) {
 }
 
 window.eliminarProducto = eliminarProducto;
+
+
+elementos.totalProductos = document.getElementById("total-productos");
+elementos.precioPromedio = document.getElementById("precio-promedio");
+elementos.categoriasUnicas = document.getElementById("categorias-unicas");
+
+function calcularEstadisticas() {
+  const total = productos.length;
+  const sumaPrecios = productos.reduce((suma, p) => suma + p.precio, 0);
+  const promedio = total === 0 ? 0 : sumaPrecios / total;
+
+  const categorias = new Set(productos.map((p) => p.categoria.toLowerCase()));
+
+  return {
+    total,
+    promedio,
+    categorias: categorias.size,
+  };
+}
+
+function actualizarEstadisticas() {
+  const stats = calcularEstadisticas();
+
+  elementos.totalProductos.textContent = stats.total;
+  elementos.precioPromedio.textContent = `$${stats.promedio.toFixed(2)}`;
+  elementos.categoriasUnicas.textContent = stats.categorias;
+}
 

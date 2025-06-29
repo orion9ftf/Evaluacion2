@@ -123,3 +123,47 @@ input.error {
   background-color: #dc2626;
 }
 
+.estadisticas {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.stat-item:hover {
+  transform: scale(1.02);
+}
+
+.stat-blue {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.stat-green {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.stat-purple {
+  background-color: #e9d5ff;
+  color: #7c3aed;
+}
+
+.stat-label {
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+
