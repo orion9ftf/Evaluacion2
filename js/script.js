@@ -160,3 +160,34 @@ elementos.formulario.addEventListener("submit", (evento) => {
   elementos.formulario.reset();
 });
 
+const html = productos
+  .map((p) => {
+    return `
+      <div class="producto-item" data-id="${p.id}">
+        <div class="producto-info">
+          <h3>${p.nombre}</h3>
+          <p>Categoría: ${p.categoria} | Precio: $${p.precio.toFixed(2)}</p>
+        </div>
+        <button 
+          class="btn btn-danger" 
+          onclick="eliminarProducto(${p.id})"
+          title="Eliminar producto"
+        >
+          🗑️
+        </button>
+      </div>`;
+  })
+  .join("");
+
+function eliminarProducto(id) {
+  const indice = productos.findIndex((producto) => producto.id === id);
+
+  if (indice !== -1) {
+    const eliminado = productos.splice(indice, 1)[0];
+    actualizarListaProductos();
+    console.log(`Producto "${eliminado.nombre}" eliminado`);
+  }
+}
+
+window.eliminarProducto = eliminarProducto;
+

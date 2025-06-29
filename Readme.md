@@ -29,7 +29,10 @@ Agregamos los campos al formulario
 Agregamos un contenedor para mostrar la lista de productos debajo del formulario
 
 
-### Etapa 6 | 
+### Etapa 6 | Eliminar productos desde la interfaz
+No hay cambios en esta etapa en el HTML original. Pero se modifica el código generado dinámicamente en Javascript para agregar un botón de eliminación.
+
+
 ### Etapa 7 | 
 ### Etapa 8 | 
 ### Etapa 9 | 

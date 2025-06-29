@@ -109,4 +109,17 @@ input.error {
   color: #6b7280;
 }
 
+.btn-danger {
+  background-color: #ef4444;
+  color: white;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+}
 
