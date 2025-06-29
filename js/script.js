@@ -1,26 +1,35 @@
-
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Etapa 1 - probando js");
-});
+  console.log("Etapa 1 - Iniciando aplicación");
 
+  obtenerElementosDOM();
+  configurarValidaciones();
+
+  elementos.formulario.addEventListener("submit", manejarEnvioFormulario);
+});
 
 const elementos = {
   formulario: null,
   nombre: null,
   precio: null,
   categoria: null,
+  mensaje: null,
+  totalProductos: null,
+  precioPromedio: null,
+  categoriasUnicas: null,
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Probando Etapa 2");
-  obtenerElementosDOM();
-});
+const productos = [];
+let contadorId = 1;
 
 function obtenerElementosDOM() {
   elementos.formulario = document.getElementById("formulario-producto");
   elementos.nombre = document.getElementById("nombre");
   elementos.precio = document.getElementById("precio");
   elementos.categoria = document.getElementById("categoria");
+  elementos.mensaje = document.getElementById("mensaje");
+  elementos.totalProductos = document.getElementById("total-productos");
+  elementos.precioPromedio = document.getElementById("precio-promedio");
+  elementos.categoriasUnicas = document.getElementById("categorias-unicas");
 }
 
 function configurarValidaciones() {
@@ -59,17 +68,11 @@ function mostrarErrorCampo(nombreCampo, mensajeError) {
 }
 
 function limpiarErrorCampo(nombreCampo) {
-  const input = document.getElementById(nombreCampo);
-  const error = document.getElementById(`error-${nombreCampo}`);
-  input.classList.remove("error");
-  error.textContent = "";
+  const campo = document.getElementById(nombreCampo);
+  const mensaje = document.getElementById(`error-${nombreCampo}`);
+  campo.classList.remove("error");
+  mensaje.textContent = "";
 }
-
-// función desde DOMContentLoaded
-// document.addEventListener("DOMContentLoaded", () => {
-//   obtenerElementosDOM();
-//   configurarValidaciones();
-// });
 
 function validarFormulario() {
   const campos = ["nombre", "precio", "categoria"];
@@ -91,24 +94,25 @@ function obtenerDatosFormulario() {
   };
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  obtenerElementosDOM();
-  configurarValidaciones();
+function manejarEnvioFormulario(evento) {
+  evento.preventDefault();
 
-  // elementos.formulario.addEventListener("submit", (evento) => {
-  //   evento.preventDefault();
+  if (!validarFormulario()) {
+    mostrarMensaje("Por favor corrige los errores en el formulario", "error");
+    return;
+  }
 
-  //   if (!validarFormulario()) {
-  //     console.warn("Formulario no válido");
-  //     return;
-  //   }
+  const datos = obtenerDatosFormulario();
+  const nuevoProducto = {
+    id: contadorId++,
+    ...datos,
+    fechaCreacion: new Date().toISOString(),
+  };
 
-  //   const datos = obtenerDatosFormulario();
-  //   console.log("Producto listo para ser agregado:", datos);
-  // });
-});
-
-const productos = [];
+  agregarProducto(nuevoProducto);
+  limpiarFormulario();
+  mostrarMensaje("Producto agregado correctamente", "success");
+}
 
 function agregarProducto(producto) {
   productos.push(producto);
@@ -129,11 +133,18 @@ function actualizarListaProductos() {
   const html = productos
     .map((p) => {
       return `
-        <div class="producto-item">
+        <div class="producto-item" data-id="${p.id}">
           <div class="producto-info">
-            <h3>${p.nombre}</h3>
-            <p>Categoría: ${p.categoria} | Precio: $${p.precio.toFixed(2)}</p>
+            <h3>${escapeHTML(p.nombre)}</h3>
+            <p>Categoría: ${escapeHTML(p.categoria)} | Precio: $${p.precio.toFixed(2)}</p>
           </div>
+          <button 
+            class="btn btn-danger" 
+            onclick="eliminarProducto(${p.id})"
+            title="Eliminar producto"
+          >
+            🗑️
+          </button>
         </div>`;
     })
     .join("");
@@ -141,44 +152,6 @@ function actualizarListaProductos() {
   contenedor.innerHTML = html;
   actualizarEstadisticas();
 }
-
-let contadorId = 1;
-
-elementos.formulario.addEventListener("submit", (evento) => {
-  evento.preventDefault();
-
-  if (!validarFormulario()) return;
-
-  const datos = obtenerDatosFormulario();
-
-  const nuevoProducto = {
-    id: contadorId++,
-    ...datos,
-    fechaCreacion: new Date().toISOString(),
-  };
-
-  agregarProducto(nuevoProducto);
-  elementos.formulario.reset();
-});
-
-const html = productos
-  .map((p) => {
-    return `
-      <div class="producto-item" data-id="${p.id}">
-        <div class="producto-info">
-          <h3>${p.nombre}</h3>
-          <p>Categoría: ${p.categoria} | Precio: $${p.precio.toFixed(2)}</p>
-        </div>
-        <button 
-          class="btn btn-danger" 
-          onclick="eliminarProducto(${p.id})"
-          title="Eliminar producto"
-        >
-          🗑️
-        </button>
-      </div>`;
-  })
-  .join("");
 
 function eliminarProducto(id) {
   const indice = productos.findIndex((producto) => producto.id === id);
@@ -192,16 +165,10 @@ function eliminarProducto(id) {
 
 window.eliminarProducto = eliminarProducto;
 
-
-elementos.totalProductos = document.getElementById("total-productos");
-elementos.precioPromedio = document.getElementById("precio-promedio");
-elementos.categoriasUnicas = document.getElementById("categorias-unicas");
-
 function calcularEstadisticas() {
   const total = productos.length;
   const sumaPrecios = productos.reduce((suma, p) => suma + p.precio, 0);
   const promedio = total === 0 ? 0 : sumaPrecios / total;
-
   const categorias = new Set(productos.map((p) => p.categoria.toLowerCase()));
 
   return {
@@ -219,23 +186,31 @@ function actualizarEstadisticas() {
   elementos.categoriasUnicas.textContent = stats.categorias;
 }
 
-elementos.mensaje = document.getElementById("mensaje");
 function mostrarMensaje(texto, tipo = "success") {
   const el = elementos.mensaje;
 
   el.textContent = texto;
   el.className = `mensaje ${tipo} fade-in`;
 
+  el.classList.remove("hidden");
   setTimeout(() => {
     el.classList.add("hidden");
   }, 4000);
 }
 
-agregarProducto(nuevoProducto);
-mostrarMensaje("Producto agregado correctamente", "success");
+function limpiarFormulario() {
+  elementos.formulario.reset();
 
-if (!validarFormulario()) {
-  mostrarMensaje("Por favor corrige los errores en el formulario", "error");
-  return;
+  const campos = ["nombre", "precio", "categoria"];
+  campos.forEach((campo) => {
+    limpiarErrorCampo(campo);
+  });
 }
 
+function escapeHTML(texto) {
+  const div = document.createElement("div");
+  div.textContent = texto;
+  return div.innerHTML;
+}
+
+window.escapeHTML = escapeHTML;

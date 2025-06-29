@@ -35,8 +35,15 @@ No hay cambios en esta etapa en el HTML original. Pero se modifica el código ge
 
 ### Etapa 7 | Mostrar estadísticas de productos (total, promedio, categorías únicas)
 
-
 ### Etapa 8 | Mensajes de alerta al usuario (éxito y error)
 
-### Etapa 9 | 
-### Etapa 10 | 
+### Etapa 9 | Limpiar formulario y errores tras agregar producto
+
+### Etapa 10 | Accesibilidad y protección (escape HTML + IDs únicos)
+
+## Según Rúbrica se cumple con:
+
+- Modificación del DOM con JavaScript
+- Validación de formularios HTML
+- Uso de arreglos y objetos en la aplicación
+- Organización del código con funciones
