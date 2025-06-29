@@ -36,6 +36,7 @@ No hay cambios en esta etapa en el HTML original. Pero se modifica el código ge
 ### Etapa 7 | Mostrar estadísticas de productos (total, promedio, categorías únicas)
 
 
-### Etapa 8 | 
+### Etapa 8 | Mensajes de alerta al usuario (éxito y error)
+
 ### Etapa 9 | 
 ### Etapa 10 | 

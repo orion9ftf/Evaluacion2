@@ -219,3 +219,23 @@ function actualizarEstadisticas() {
   elementos.categoriasUnicas.textContent = stats.categorias;
 }
 
+elementos.mensaje = document.getElementById("mensaje");
+function mostrarMensaje(texto, tipo = "success") {
+  const el = elementos.mensaje;
+
+  el.textContent = texto;
+  el.className = `mensaje ${tipo} fade-in`;
+
+  setTimeout(() => {
+    el.classList.add("hidden");
+  }, 4000);
+}
+
+agregarProducto(nuevoProducto);
+mostrarMensaje("Producto agregado correctamente", "success");
+
+if (!validarFormulario()) {
+  mostrarMensaje("Por favor corrige los errores en el formulario", "error");
+  return;
+}
+
