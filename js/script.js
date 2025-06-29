@@ -143,7 +143,7 @@ function actualizarListaProductos() {
             onclick="eliminarProducto(${p.id})"
             title="Eliminar producto"
           >
-            🗑️
+            <p>Eliminar</p>
           </button>
         </div>`;
     })
