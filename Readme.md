@@ -47,3 +47,11 @@ No hay cambios en esta etapa en el HTML original. Pero se modifica el código ge
 - Validación de formularios HTML
 - Uso de arreglos y objetos en la aplicación
 - Organización del código con funciones
+
+### Se implementan Issues
+
+Tareas pendientes:
+
+- Revisión de código seguro
+- Limite de ingreso de datos para evitar el ataque de "buffer overflow"
+- Imput solo con datos válidos
