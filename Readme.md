@@ -60,3 +60,11 @@ Ejemplo: si el usuario intenta introducir letras en el campo de números, el sis
 - Validación de formularios HTML
 - Uso de arreglos y objetos en la aplicación
 - Organización del código con funciones
+
+### Se implementan Issues
+
+Tareas pendientes:
+
+- Revisión de código seguro
+- Limite de ingreso de datos para evitar el ataque de "buffer overflow"
+- Imput solo con datos válidos
