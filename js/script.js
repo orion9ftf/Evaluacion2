@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   obtenerElementosDOM();
   configurarValidaciones();
 
+  // Manejo de envío de formulario
   elementos.formulario.addEventListener("submit", manejarEnvioFormulario);
 });
 
@@ -21,6 +22,7 @@ const elementos = {
 const productos = [];
 let contadorId = 1;
 
+// 
 function obtenerElementosDOM() {
   elementos.formulario = document.getElementById("formulario-producto");
   elementos.nombre = document.getElementById("nombre");

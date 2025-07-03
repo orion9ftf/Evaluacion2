@@ -35,11 +35,24 @@ No hay cambios en esta etapa en el HTML original. Pero se modifica el código ge
 
 ### Etapa 7 | Mostrar estadísticas de productos (total, promedio, categorías únicas)
 
+La idea central es poder plasmar los productos que el usuario ingrese en el input de "Agregar Productos"
+
 ### Etapa 8 | Mensajes de alerta al usuario (éxito y error)
+Cuando el usuario introduce entradas válidas este mensaje de "Producto agregado correctamente" se puede visualizar en color verde. 
+
+Mientras que cuando el usuario no completa los campos pero intenta enviar el formulario vacío, este emite un mensaje de error con "Por favor corrige los errores en el formulario"
+
 
 ### Etapa 9 | Limpiar formulario y errores tras agregar producto
 
+Se muestra un botón de color rojo, una vez que el usuario ingresa un producto al carrito de compras. El cual le ayuda a limpiar el formulario.
+
 ### Etapa 10 | Accesibilidad y protección (escape HTML + IDs únicos)
+
+Esto ayuda a que el usuario ingrese datos válidos.
+
+Ejemplo: si el usuario intenta introducir letras en el campo de números, el sistema no lo permite.
+
 
 ## Según Rúbrica se cumple con:
 

@@ -10,15 +10,12 @@
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   color: white;
   margin-bottom: 2rem;
-  border-radius: 10px;
 }
 
 .section {
   background: white;
   margin: 2rem 0;
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 body {
@@ -220,3 +217,11 @@ input.error {
   }
 }
 
+/* implementar footer */
+footer {
+    padding: 40px 0;
+    text-align: center;
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
